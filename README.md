@@ -6,7 +6,7 @@ This is my personal zsh config.
 
 ```
 git clone <this repo> ~/.config/zsh
-git clone https://github.com/romkatv/powerlevel10k.git ~/.config/zsh/powerline10k
+git clone https://github.com/romkatv/powerlevel10k.git ~/.config/zsh/powerlevel10k
 cp ~/.config/zsh/dotzshrc ~/.zshrc
 ```
 
