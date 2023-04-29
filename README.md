@@ -5,7 +5,7 @@ This is my personal zsh config.
 ## Installation instructions
 
 ```
-git clone <this repo> ~/.config/zsh
+git clone git@github.com:adrianschlatter/zsh.config.git ~/.config/zsh
 git clone https://github.com/romkatv/powerlevel10k.git ~/.config/zsh/powerlevel10k
 cp ~/.config/zsh/dotzshrc ~/.zshrc
 ```
