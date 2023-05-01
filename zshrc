@@ -5,8 +5,18 @@ source ~/.config/zsh/zshrc.powerlevel10k
 # Aliases
 # ============================================================================= 
 
-alias ll='ls -alF'
-alias ls='ls --color'
+if command -v exa > /dev/null; then
+	alias ls='exa --icons'
+	alias ll='exa -alh'
+	alias tree='exa --tree'
+else
+	alias ls='ls --color'
+	alias ll='ls -alh'
+fi
+
+if command -v bat > /dev/null; then
+	alias cat='bat'
+fi
 
 alias gls='git status'
 alias grep='grep --color=auto'
@@ -44,4 +54,16 @@ HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
 SAVEHIST=5000
 HISTSIZE=2000
 
+# completions
+# =============================================================================
+
 autoload -Uz compinit; compinit; _comp_options+=(globdots)
+
+# zoxide
+# =============================================================================
+
+if command -v zoxide > /dev/null; then
+	eval "$(zoxide init zsh)"
+	alias cd='z'
+fi
+
