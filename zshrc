@@ -67,6 +67,9 @@ autoload -Uz compinit; compinit; _comp_options+=(globdots)
 
 if command -v zoxide > /dev/null; then
 	eval "$(zoxide init zsh)"
+	if whence -w cd | grep 'alias'; then
+		unalias cd > /dev/null
+	fi
 	alias cd='z'
 fi
 
