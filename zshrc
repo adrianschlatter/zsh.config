@@ -39,6 +39,7 @@ fi
 
 zstyle ':completion:*:*:git:*' script ~/.config/zsh/git-completion.bash
 fpath=(~/.config/zsh $fpath)
+export EDITOR=vi
 
 # HISTORY
 # ============================================================================= 
