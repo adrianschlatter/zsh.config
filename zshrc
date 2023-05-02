@@ -1,4 +1,11 @@
-# powerlevel10k:
+# PATH
+# ============================================================================= 
+
+path=(~/bin $path)
+
+# POWERLEVEL10K
+# ============================================================================= 
+
 source ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.config/zsh/zshrc.powerlevel10k
 
@@ -37,8 +44,6 @@ fi
 # Git INTEGRATION
 #==============================================================================
 
-zstyle ':completion:*:*:git:*' script ~/.config/zsh/git-completion.bash
-fpath=(~/.config/zsh $fpath)
 export EDITOR=vi
 
 # HISTORY
