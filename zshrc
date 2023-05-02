@@ -15,10 +15,12 @@ source ~/.config/zsh/zshrc.powerlevel10k
 if command -v exa > /dev/null; then
 	alias ls='exa --icons'
 	alias ll='exa -alh'
+	alias l='exa -lh'
 	alias tree='exa --tree'
 else
 	alias ls='ls --color'
 	alias ll='ls -alh'
+	alias l='ls -lh'
 fi
 
 if command -v bat > /dev/null; then
@@ -72,7 +74,7 @@ autoload -Uz compinit; compinit; _comp_options+=(globdots)
 
 if command -v zoxide > /dev/null; then
 	eval "$(zoxide init zsh)"
-	if whence -w cd | grep 'alias'; then
+	if whence -w cd | grep 'alias' > /dev/null; then
 		unalias cd > /dev/null
 	fi
 	alias cd='z'
