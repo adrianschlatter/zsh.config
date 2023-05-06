@@ -44,6 +44,16 @@ then
 	ssh-add -A &> /dev/null
 fi
 
+# MOSH
+# =============================================================================
+
+# fixes locale problem on MacOS:
+if [[ "$OSTYPE" == "darwin"* ]]
+then
+	export LANG=en_US.UTF-8
+	export LC_CTYPE=en_US.UTF-8
+fi
+
 # Git INTEGRATION
 #==============================================================================
 
