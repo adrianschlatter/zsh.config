@@ -36,7 +36,10 @@ alias grep='grep --color=auto'
 # SSH
 # =============================================================================
 
-eval "$(ssh-agent -s)" > /dev/null
+# If it is not running yet, start ssh-agent:
+if [ -z "${SSH_AUTH_SOCK+1}" ]; then
+	eval "$(ssh-agent -s)" > /dev/null
+fi
 
 # If on MacOS, add ssh keys. Use keychain to obtain key passwords:
 if [[ "$OSTYPE" == "darwin"* ]]
