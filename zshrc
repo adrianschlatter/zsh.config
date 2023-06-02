@@ -87,6 +87,7 @@ HISTSIZE=2000
 # =============================================================================
 
 autoload -Uz compinit; compinit; _comp_options+=(globdots)
+source ~/.config/zsh/completion/timewarrior.zsh
 
 # zoxide
 # =============================================================================
