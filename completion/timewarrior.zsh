@@ -54,7 +54,9 @@ _timewarrior_completion() {
                     _files
                     ;;
                 (continue)
-                    _files -g "*.track"
+		    local -a tags
+		    tags=($(timew tags | tail -n +4 | head -n -1 | awk '{print $1}' | sed 's/:/\\:/'))
+		    _describe 'tags' tags
                     ;;
                 (export)
                     _files -g "*.json"
