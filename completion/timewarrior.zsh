@@ -50,43 +50,10 @@ _timewarrior_completion() {
             ;;
         (args)
             case $words[2] in
-                (cancel)
-                    _files
-                    ;;
-                (continue)
+                (continue|start)
 		    local -a tags
 		    tags=($(timew tags | tail -n +4 | head -n -1 | awk '{print $1}' | sed 's/:/\\:/'))
 		    _describe 'tags' tags
-                    ;;
-                (export)
-                    _files -g "*.json"
-                    ;;
-                (import)
-                    _files -g "*.json"
-                    ;;
-                (help)
-                    _files -g "*(:t)"
-                    ;;
-                (log)
-                    _files
-                    ;;
-                (shorten)
-                    _files -g "*.track"
-                    ;;
-                (split)
-                    _files -g "*.track"
-                    ;;
-                (start)
-                    _files
-                    ;;
-                (stop)
-                    _files -g "*.track"
-                    ;;
-                (tag)
-                    _files -g "*.track"
-                    ;;
-                (track)
-                    _files
                     ;;
             esac
             ;;
