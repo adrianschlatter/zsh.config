@@ -100,3 +100,17 @@ if command -v zoxide > /dev/null; then
 	alias cd='z'
 fi
 
+# timew
+# =============================================================================
+
+# 'timew-tagrename <oldtag> <newtag>'
+function timew-tagrename()
+{
+	local oldtag=$1; shift
+	local newtag=$1; shift
+	local idlist=$(timew summary 1970W01 - now "$oldtag" :ids |\
+	               sed -nr 's/.* (@[0-9]+) .*/\1/p')
+	echo "$idlist" | xargs -I ids timew tag ids "$newtag"
+	echo "$idlist" | xargs -I ids timew untag ids "$oldtag"
+}
+
