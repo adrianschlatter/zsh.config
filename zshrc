@@ -114,3 +114,10 @@ function timew-tagrename()
 	echo "$idlist" | xargs -I ids timew untag ids "$oldtag"
 }
 
+# emacs mode
+# =============================================================================
+
+# Sometimes something (tmux?) switches zsh to vi mode.
+# Make sure it's in emacs mode:
+
+bindkey -e
