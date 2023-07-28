@@ -50,7 +50,7 @@ _timewarrior_completion() {
             ;;
         (args)
             case $words[2] in
-                (continue|start)
+                (continue|start|track)
 		    local -a tags
 		    tags=($(timew tags | tail -n +4 | head -n -1 | awk '{print $1}' | sed 's/:/\\:/'))
 		    _describe 'tags' tags
