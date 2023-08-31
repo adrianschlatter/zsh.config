@@ -121,3 +121,11 @@ function timew-tagrename()
 # Make sure it's in emacs mode:
 
 bindkey -e
+
+# catppuccin theme
+# (must be last in this config file)
+# ============================================================================= 
+
+source ~/.config/zsh/catppuccin/themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh
+source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+

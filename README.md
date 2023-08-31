@@ -7,6 +7,8 @@ This is my personal zsh config.
 ```
 git clone git@github.com:adrianschlatter/zsh.config.git ~/.config/zsh
 git clone https://github.com/romkatv/powerlevel10k.git ~/.config/zsh/powerlevel10k
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.config/zsh/zsh-syntax-highlighting
+git clone https://github.com/catppuccin/zsh-syntax-highlighting.git ~/.config/zsh/catppuccin
 cp ~/.config/zsh/dotzshrc ~/.zshrc
 ```
 
@@ -19,3 +21,10 @@ If conda is needed, also run:
 This will modify .zshrc. As the conda path and other things depend on the
 installation at hand, this is probably the right thing to do. Including the
 conda snippet in this repository would not (generally) work.
+
+
+## Background
+
+* powerlevel10k provides a powerful prompt including status info on various things.
+* zsh-syntax-highlighting provides syntax highlighting for zsh
+    - and catppuccin is the theme to use for syntax highlighting
