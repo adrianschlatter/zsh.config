@@ -35,6 +35,10 @@ elif command -v batcat > /dev/null; then
 	alias cat='batcat'
 fi
 
+if command -v nvim > /dev/null; then
+	alias vi='nvim'
+fi
+
 alias gls='git status'
 alias grep='grep --color=auto'
 
