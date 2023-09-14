@@ -126,6 +126,11 @@ function timew-tagrename()
 
 bindkey -e
 
+# add command-line editing feature and shortcut:
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^Xe' edit-command-line
+
 # catppuccin theme
 # (must be last in this config file)
 # ============================================================================= 
