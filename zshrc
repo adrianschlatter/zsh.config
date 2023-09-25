@@ -37,6 +37,7 @@ fi
 
 if command -v nvim > /dev/null; then
 	alias vi='nvim'
+  export EDITOR=$(command -v nvim)
 fi
 
 alias gls='git status'
@@ -65,11 +66,6 @@ then
 	export LANG=en_US.UTF-8
 	export LC_CTYPE=en_US.UTF-8
 fi
-
-# Git INTEGRATION
-#==============================================================================
-
-export EDITOR=vi
 
 # OPEN-AI Key for mods:
 #==============================================================================
