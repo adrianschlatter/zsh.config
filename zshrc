@@ -1,8 +1,3 @@
-# Go Home
-# ============================================================================= 
-
-cd ~
-
 # PATH
 # ============================================================================= 
 
@@ -131,6 +126,22 @@ bindkey -e
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^Xe' edit-command-line
+
+# if not inside tmux:
+if [ "${TMUX}" = "" ]; then
+	# go home (WSL usually starts in a weird directory:
+	cd ~
+
+	# bitwarden cli:
+	# unlock bitwarden once in the "outside" terminal and set the
+	# session key so that it will be available inside tmux without
+	# having to unlock again:
+	if command -v bw > /dev/null; then
+		SESSION_KEY=$(bw unlock \
+				| sed -n 's/export BW_SESSION="\(.*\)"/\1/p')
+		export BW_SESSION="${SESSION_KEY}"
+	fi
+fi
 
 # catppuccin theme
 # (must be last in this config file)
