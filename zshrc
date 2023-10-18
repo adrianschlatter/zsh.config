@@ -137,13 +137,18 @@ if [ "${TMUX}" = "" ]; then
 	# session key so that it will be available inside tmux without
 	# having to unlock again:
 	if command -v bw > /dev/null; then
-		SESSION_KEY=$(bw unlock \
-			| sed -n 's/export BW_SESSION="\(.*\)"/\1/p')
+		if [ "$(bw status | jq -r '.status')" = 'unauthorized' ]
+		then
+			OUTPUT=$(bw login)
+		else
+			OUTPUT=$(bw unlock)
+		fi
+		SESSION_KEY=$(echo ${OUTPUT} | sed -n 's/export BW_SESSION="\(.*\)"/\1/p')
 		export BW_SESSION="${SESSION_KEY}"
 		{
 			setopt extended_glob
 			for key in ~/.ssh/id^*.*; do
-				DISPLAY=1 SSH_ASKPASS='${HOME}/.config/zsh/askpass' ssh-add -q "$key" < /dev/null
+				DISPLAY=1 SSH_ASKPASS="${HOME}/.config/zsh/askpass" ssh-add -q "$key" < /dev/null
 			done
 			unsetopt extended_glob
 		} &|

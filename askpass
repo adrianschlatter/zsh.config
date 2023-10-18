@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 KEY=$(echo "$1" | sed -n 's/^Enter passphrase for \(.*\): $/\1/p')
 FINGERPRINT=$(ssh-keygen -l -f ${KEY} | cut -d ' ' -f 2)
