@@ -138,8 +138,15 @@ if [ "${TMUX}" = "" ]; then
 	# having to unlock again:
 	if command -v bw > /dev/null; then
 		SESSION_KEY=$(bw unlock \
-				| sed -n 's/export BW_SESSION="\(.*\)"/\1/p')
+			| sed -n 's/export BW_SESSION="\(.*\)"/\1/p')
 		export BW_SESSION="${SESSION_KEY}"
+		{
+			setopt extended_glob
+			for key in ~/.ssh/id^*.*; do
+				DISPLAY=1 SSH_ASKPASS='${HOME}/.config/zsh/askpass' ssh-add -q "$key" < /dev/null
+			done
+			unsetopt extended_glob
+		} &|
 	fi
 fi
 

@@ -12,7 +12,15 @@ git clone https://github.com/catppuccin/zsh-syntax-highlighting.git ~/.config/zs
 cp ~/.config/zsh/dotzshrc ~/.zshrc
 ```
 
-If conda is needed, also run:
+Furthermore, this config unfolds its full potential if you have installed:
+
+* exa (better ls)
+* bat (better cat)
+* bitwarden cli (acces to your password vault)
+* ssh-agent (ssh-keys added using passphrases from bitwarden)
+* nvim (the editor)
+
+If you need conda, also run:
 
 ```
 <path_to_conda>/conda init zsh
