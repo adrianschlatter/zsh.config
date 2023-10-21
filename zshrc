@@ -148,10 +148,13 @@ if [ "${TMUX}" = "" ]; then
 		{
 			setopt extended_glob
 			for key in ~/.ssh/id^*.*; do
-				DISPLAY=1 SSH_ASKPASS="${HOME}/.config/zsh/askpass" ssh-add -q "$key" < /dev/null
+				DISPLAY=1 SSH_ASKPASS="${HOME}/.config/zsh/askpass_ssh" ssh-add -q "$key" < /dev/null
 			done
 			unsetopt extended_glob
-		} &|
+        }
+        # sudo -A will use bitwarden to look up password based on username
+        # sudo asks for and host the command is executed on:
+        export SUDO_ASKPASS="${HOME}/.config/zsh/askpass_sudo"
 	fi
 fi
 
