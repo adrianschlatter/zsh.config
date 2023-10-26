@@ -2,7 +2,6 @@
 
 HOST=$(hostname -s)
 USER=$(echo "$1" | sed -n 's/^\[sudo\] password for \(.*\): $/\1/p')
->&2 echo "$0 | $1 | $2 | $3"
 PASSWORD=$(bw get password "${USER}@${HOST}")
 
 echo "${PASSWORD}"
