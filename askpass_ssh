@@ -2,6 +2,6 @@
 
 KEY=$(echo "$1" | sed -n 's/^Enter passphrase for \(.*\): $/\1/p')
 FINGERPRINT=$(ssh-keygen -l -f ${KEY} | cut -d ' ' -f 2)
-PASSPHRASE=$(bw list items --search 'ssh' | jq -r --arg FP "$FINGERPRINT" '.[] | select(.fields[].value==$FP) | .fields[] | select(.name=="Passphrase").value')
+PASSPHRASE=$(rbw get "${FINGERPRINT}" --field passphrase | sed -n 's/^Passphrase: \(.*\)$/\1/p')
 
 echo "${PASSPHRASE}"

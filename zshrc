@@ -133,25 +133,15 @@ if [ "${TMUX}" = "" ]; then
 	cd ~
 
 	# bitwarden cli:
-	# unlock bitwarden once in the "outside" terminal and set the
-	# session key so that it will be available inside tmux without
-	# having to unlock again:
-	if command -v bw > /dev/null; then
-		if [ "$(bw status | jq -r '.status')" = 'unauthorized' ]
-		then
-			OUTPUT=$(bw login)
-		else
-			OUTPUT=$(bw unlock)
-		fi
-		SESSION_KEY=$(echo ${OUTPUT} | sed -n 's/export BW_SESSION="\(.*\)"/\1/p')
-		export BW_SESSION="${SESSION_KEY}"
+	if command -v rbw > /dev/null; then
+        rbw unlock  # will ask for password if not yet logged in
 		{
 			setopt extended_glob
 			for key in ~/.ssh/id^*.*; do
 				DISPLAY=1 SSH_ASKPASS="${HOME}/.config/zsh/askpass_ssh" ssh-add -q "$key" < /dev/null
 			done
 			unsetopt extended_glob
-        }
+        } &|
         # sudo -A will use bitwarden to look up password based on username
         # sudo asks for and host the command is executed on:
         export SUDO_ASKPASS="${HOME}/.config/zsh/askpass_sudo"
