@@ -46,12 +46,6 @@ if [ -z "${SSH_AUTH_SOCK+1}" ]; then
 	eval "$(ssh-agent -s)" > /dev/null
 fi
 
-# If on MacOS, add ssh keys. Use keychain to obtain key passwords:
-if [[ "$OSTYPE" == "darwin"* ]]
-then
-	ssh-add -A &> /dev/null
-fi
-
 # MOSH
 # =============================================================================
 
