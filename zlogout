@@ -3,7 +3,5 @@
 # So we don't want to kill the ssh-agent when we exit a tmux session,
 # only when we exit the zsh login session
 if [ "${TMUX}" = "" ]; then
-    echo "Killing ssh-agent"
     eval $(ssh-agent -k)
-    sleep 3
 fi
