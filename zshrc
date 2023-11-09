@@ -1,7 +1,7 @@
 # Check whether .zlogout does not exist:
 # ============================================================================= 
 
-if [ ! -f ~/.zlogout ]; then
+if [ ! -L ~/.zlogout ]; then
     # If not, create it:
     ln -s ~/.conf/zsh/zlogout ~/.zlogout
 fi
