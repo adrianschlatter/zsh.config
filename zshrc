@@ -3,7 +3,7 @@
 
 if [ ! -L ~/.zlogout ]; then
     # If not, create it:
-    ln -s ~/.conf/zsh/zlogout ~/.zlogout
+    ln -s ~/.config/zsh/zlogout ~/.zlogout
 fi
 
 # PATH
