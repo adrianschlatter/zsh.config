@@ -2,6 +2,9 @@
 
 KEY=$(echo "$1" | sed -n 's/^Enter passphrase for \(.*\): $/\1/p')
 FINGERPRINT=$(ssh-keygen -l -f ${KEY} | cut -d ' ' -f 2)
-PASSPHRASE=$(rbw get "${FINGERPRINT}" --field passphrase | sed -n 's/^Passphrase: \(.*\)$/\1/p')
+PASSPHRASE=$(rbw get "${FINGERPRINT}" --field passphrase)
+if [[ "${FINGERPRINT}" =~ "Passphrase: " ]]; then
+    PASSPHRASE=$(echo "${PASSPHRASE}" | sed -n 's/^Passphrase: \(.*\)$/\1/p')
+fi
 
 echo "${PASSPHRASE}"
