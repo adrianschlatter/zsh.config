@@ -6,29 +6,18 @@ This is my personal zsh config.
 
 ```
 git clone git@github.com:adrianschlatter/zsh.config.git ~/.config/zsh
-git clone https://github.com/romkatv/powerlevel10k.git ~/.config/zsh/powerlevel10k
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.config/zsh/zsh-syntax-highlighting
-git clone https://github.com/catppuccin/zsh-syntax-highlighting.git ~/.config/zsh/catppuccin
-cp ~/.config/zsh/dotzshrc ~/.zshrc
+cd ~/.config/zsh
+make
+make install
 ```
 
 Furthermore, this config unfolds its full potential if you have installed:
 
-* exa (better ls)
+* exa (better ls, better tree)
 * bat (better cat)
-* bitwarden cli (acces to your password vault)
+* rbw bitwarden cli (acces to your password vault)
 * ssh-agent (ssh-keys added using passphrases from bitwarden)
 * nvim (the editor)
-
-If you need conda, also run:
-
-```
-<path_to_conda>/conda init zsh
-```
-
-This will modify .zshrc. As the conda path and other things depend on the
-installation at hand, this is probably the right thing to do. Including the
-conda snippet in this repository would not (generally) work.
 
 
 ## Background

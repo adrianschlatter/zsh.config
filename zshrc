@@ -1,11 +1,3 @@
-# Check whether .zlogout does not exist:
-# ============================================================================= 
-
-if [ ! -L ~/.zlogout ]; then
-    # If not, create it:
-    ln -s ~/.config/zsh/zlogout ~/.zlogout
-fi
-
 # PATH
 # ============================================================================= 
 
@@ -45,14 +37,6 @@ fi
 
 alias gls='git status'
 alias grep='grep --color=auto'
-
-# SSH
-# =============================================================================
-
-# If it is not running yet, start ssh-agent:
-if [ -z "${SSH_AUTH_SOCK+1}" ]; then
-	eval "$(ssh-agent -s)" > /dev/null
-fi
 
 # MOSH
 # =============================================================================
@@ -129,28 +113,8 @@ autoload edit-command-line
 zle -N edit-command-line
 bindkey '^Xe' edit-command-line
 
-# if not inside tmux:
-if [ "${TMUX}" = "" ]; then
-	# go home (WSL usually starts in a weird directory:
-	cd ~
 
-	# bitwarden cli:
-	if command -v rbw > /dev/null; then
-        rbw unlock  # will ask for password if not yet logged in
-		{
-			setopt extended_glob
-			for key in ~/.ssh/id^*.*; do
-				DISPLAY=1 SSH_ASKPASS="${HOME}/.config/zsh/askpass_ssh" ssh-add -q "$key" < /dev/null
-			done
-			unsetopt extended_glob
-        } &|
-        # sudo -A will use bitwarden to look up password based on username
-        # sudo asks for and host the command is executed on:
-        export SUDO_ASKPASS="${HOME}/.config/zsh/askpass_sudo"
-	fi
-fi
-
-# catppuccin theme
+# catppuccin syntax-highlighting theme
 # (must be last in this config file)
 # ============================================================================= 
 
