@@ -28,7 +28,7 @@ install:
 	@echo "Link .zlogin"
 # Check whether .zlogin exists:
 	@if [ ! -L ~/.zlogin ]; then \
-		ln -s ~/.config/zsh/zlogin ~/.zlogin; \
+		ln -s .config/zsh/zlogin ~/.zlogin; \
 	else \
 		echo ".zlogin already exists"; \
 		exit 1; \
@@ -37,7 +37,7 @@ install:
 	@echo "Link .zlogout"
 # Check whether .zlogout exists:
 	@if [ ! -L ~/.zlogout ]; then \
-		ln -s ~/.config/zsh/zlogout ~/.zlogout; \
+		ln -s .config/zsh/zlogout ~/.zlogout; \
 	else \
 		@echo ".zlogout already exists"; \
 		exit 1; \
