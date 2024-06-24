@@ -38,6 +38,18 @@ fi
 alias gls='git status'
 alias grep='grep --color=auto'
 
+# Use rbw (bitwarden cli) for sudo and ssh passwords
+# =============================================================================
+
+if command -v rbw > /dev/null; then
+    # sudo -A will use bitwarden to look up password based on username
+    # sudo asks for and host the command is executed on:
+    export SUDO_ASKPASS="${HOME}/.config/zsh/askpass_sudo"
+
+    export SSH_ASKPASS=~/.config/zsh/askpass_ssh
+    export SSH_ASKPASS_REQUIRE=force
+fi
+
 # MOSH
 # =============================================================================
 

@@ -5,3 +5,5 @@
 if [ "${TMUX}" = "" ]; then
     eval $(ssh-agent -k)
 fi
+
+rbw lock
