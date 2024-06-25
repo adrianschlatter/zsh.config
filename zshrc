@@ -101,12 +101,14 @@ fi
 # timew
 # =============================================================================
 
-# 'timew-tagrename <oldtag> <newtag>'
+# 'timew-tagrename <oldtag> <newtag> <fromdate> <todate>
 function timew-tagrename()
 {
 	local oldtag=$1; shift
 	local newtag=$1; shift
-	local idlist=$(timew summary 1970W01 - now "$oldtag" :ids |\
+    local from=$1; shift
+    local to=$1; shift
+	local idlist=$(timew summary $from - $to "$oldtag" :ids |\
 	               sed -nr 's/.* (@[0-9]+) .*/\1/p')
 	echo "$idlist" | xargs -I ids timew tag ids "$newtag"
 	echo "$idlist" | xargs -I ids timew untag ids "$oldtag"
