@@ -1,3 +1,5 @@
+### Archived in favor of [dotfiles](https://github.com/adrianschlatter/dotfiles) ###
+
 # my zsh config
 
 This is my personal zsh config.
